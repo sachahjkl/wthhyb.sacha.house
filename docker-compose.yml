@@ -1,10 +1,10 @@
 services:
   wthhyb:
-    image: sachahjkl/wthhyb.sacha.house
+    image: sachahjkl/wthhyb.sacha.house:main
     container_name: wthhyb
     restart: unless-stopped
 
 networks:
-  services:
+  default:
     external: true
     name: services

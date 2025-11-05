@@ -14,7 +14,7 @@ type TechLogoName = "Java" | "MongoDB" | "Redis" | "Riak" | "OpenStack" | "Hadoo
 const initialLogos: TechLogo[] = [
   {
     name: "Java",
-    path: "/logos/java-vertical.svg",
+    path: (await import("../logos/java-vertical.svg")).default,
     x: 0,
     y: 58.6,
     className: "w-10 px-1",
@@ -22,7 +22,7 @@ const initialLogos: TechLogo[] = [
   },
   {
     name: "MongoDB",
-    path: "/logos/MongoDB-Logo.svg.png",
+    path: (await import("../logos/MongoDB-Logo.svg.png")).default,
     x: 22.7,
     y: 56.7,
     className: "w-32 py-2",
@@ -30,7 +30,7 @@ const initialLogos: TechLogo[] = [
   },
   {
     name: "Redis",
-    path: "/logos/Redis_Logo.svg",
+    path: (await import("../logos/Redis_Logo.svg")).default,
     x: 15.4,
     y: 82.9,
     className: "w-24 py-2",
@@ -38,7 +38,7 @@ const initialLogos: TechLogo[] = [
   },
   {
     name: "Riak",
-    path: "/logos/Riak_logo.svg",
+    path: (await import("../logos/Riak_logo.svg")).default,
     x: 50.7,
     y: 50.9,
     className: "w-16 py-3",
@@ -46,7 +46,7 @@ const initialLogos: TechLogo[] = [
   },
   {
     name: "OpenStack",
-    path: "/logos/openstack-1.svg",
+    path: (await import("../logos/openstack-1.svg")).default,
     x: 49,
     y: 76.8,
     className: "w-18",
@@ -54,7 +54,7 @@ const initialLogos: TechLogo[] = [
   },
   {
     name: "Hadoop",
-    path: "/logos/hadoop_rgb.png",
+    path: (await import("../logos/hadoop_rgb.png")).default,
     x: 70,
     y: 77.4,
     className: "w-32",
@@ -62,16 +62,23 @@ const initialLogos: TechLogo[] = [
   },
   {
     name: "Ruby",
-    path: "/logos/Ruby_logo.svg",
+    path: (await import("../logos/Ruby_logo.svg")).default,
     x: 71.7,
     y: 45.9,
     className: "w-18 px-2",
     attachedTo: ["OpenStack", "AWS", "Riak"],
   },
-  { name: "Erlang", path: "/logos/Erlang_logo.svg", x: 80, y: 17.9, className: "w-16", attachedTo: ["AWS"] },
+  {
+    name: "Erlang",
+    path: (await import("../logos/Erlang_logo.svg")).default,
+    x: 80,
+    y: 17.9,
+    className: "w-16",
+    attachedTo: ["AWS"],
+  },
   {
     name: "AWS",
-    path: "/logos/AmazonWebservices_Logo.svg",
+    path: (await import("../logos/AmazonWebservices_Logo.svg")).default,
     x: 45.2,
     y: 10.9,
     className: "w-32",
