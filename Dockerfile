@@ -15,9 +15,9 @@ COPY . .
 # Build the application
 RUN bun run build
 
-# Production stage - just the files, no runtime
-FROM scratch
+# Production stage - static web server
+FROM ghcr.io/static-web-server/static-web-server:latest
 
-# Copy built files to /app
-COPY --from=builder /build/dist /app
+# Copy built files to /public
+COPY --from=builder /build/dist /public
 
