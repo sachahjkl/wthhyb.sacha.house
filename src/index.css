@@ -1,8 +1,55 @@
 @import "tailwindcss";
 
-* {
+/* normal */
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/BarlowCondensed-Regular.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(./fonts/BarlowCondensed-Bold.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(./fonts/BarlowCondensed-Black.ttf) format("woff2");
+}
+
+/* italic */
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/BarlowCondensed-Italic.ttf) format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(./fonts/BarlowCondensed-BoldItalic.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(./fonts/BarlowCondensed-BoldItalic.ttf) format("woff2");
+}
+
+body {
   font-family: "Barlow Condensed", sans-serif;
   font-optical-sizing: auto;
-  /* font-weight: 500; */
-  font-style: normal;
 }

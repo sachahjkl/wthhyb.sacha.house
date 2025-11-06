@@ -6,10 +6,19 @@ interface TechLogo {
   x: number; // percentage 0-100
   y: number; // percentage 0-100
   className: string;
-  attachedTo: TechLogoName[]; // Array of logo names this connects to
+  connectedTo: TechLogoName[]; // Array of logo names this connects to
 }
 
-type TechLogoName = "Java" | "MongoDB" | "Redis" | "Riak" | "OpenStack" | "Hadoop" | "Ruby" | "Erlang" | "AWS";
+type TechLogoName =
+  | "Java"
+  | "MongoDB"
+  | "Redis"
+  | "Riak"
+  | "OpenStack"
+  | "Hadoop"
+  | "Ruby"
+  | "Erlang"
+  | "AWS";
 
 const initialLogos: TechLogo[] = [
   {
@@ -18,7 +27,7 @@ const initialLogos: TechLogo[] = [
     x: 0,
     y: 58.6,
     className: "w-10 px-1",
-    attachedTo: [],
+    connectedTo: [],
   },
   {
     name: "MongoDB",
@@ -26,7 +35,7 @@ const initialLogos: TechLogo[] = [
     x: 22.7,
     y: 56.7,
     className: "w-32 py-2",
-    attachedTo: ["Redis", "Java"],
+    connectedTo: ["Redis", "Java"],
   },
   {
     name: "Redis",
@@ -34,7 +43,7 @@ const initialLogos: TechLogo[] = [
     x: 15.4,
     y: 82.9,
     className: "w-24 py-2",
-    attachedTo: ["OpenStack", "Java"],
+    connectedTo: ["OpenStack", "Java"],
   },
   {
     name: "Riak",
@@ -42,7 +51,7 @@ const initialLogos: TechLogo[] = [
     x: 50.7,
     y: 50.9,
     className: "w-16 py-3",
-    attachedTo: ["Hadoop", "MongoDB"],
+    connectedTo: ["Hadoop", "MongoDB"],
   },
   {
     name: "OpenStack",
@@ -50,7 +59,7 @@ const initialLogos: TechLogo[] = [
     x: 49,
     y: 76.8,
     className: "w-18",
-    attachedTo: ["Redis", "Hadoop", "Riak", "MongoDB"],
+    connectedTo: ["Redis", "Hadoop", "Riak", "MongoDB"],
   },
   {
     name: "Hadoop",
@@ -58,7 +67,7 @@ const initialLogos: TechLogo[] = [
     x: 70,
     y: 77.4,
     className: "w-32",
-    attachedTo: ["OpenStack", "Ruby"],
+    connectedTo: ["OpenStack", "Ruby"],
   },
   {
     name: "Ruby",
@@ -66,7 +75,7 @@ const initialLogos: TechLogo[] = [
     x: 71.7,
     y: 45.9,
     className: "w-18 px-2",
-    attachedTo: ["OpenStack", "AWS", "Riak"],
+    connectedTo: ["OpenStack", "AWS", "Riak"],
   },
   {
     name: "Erlang",
@@ -74,7 +83,7 @@ const initialLogos: TechLogo[] = [
     x: 80,
     y: 17.9,
     className: "w-16",
-    attachedTo: ["AWS"],
+    connectedTo: ["AWS"],
   },
   {
     name: "AWS",
@@ -82,11 +91,17 @@ const initialLogos: TechLogo[] = [
     x: 45.2,
     y: 10.9,
     className: "w-32",
-    attachedTo: ["Riak", "MongoDB"],
+    connectedTo: ["Riak", "MongoDB"],
   },
 ];
 
-function CoordinateEditor({ logos, onUpdate }: { logos: TechLogo[]; onUpdate: (logos: TechLogo[]) => void }) {
+function CoordinateEditor({
+  logos,
+  onUpdate,
+}: {
+  logos: TechLogo[];
+  onUpdate: (logos: TechLogo[]) => void;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 20, y: 20 });
   const [isDragging, setIsDragging] = useState(false);
@@ -128,7 +143,9 @@ function CoordinateEditor({ logos, onUpdate }: { logos: TechLogo[]; onUpdate: (l
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
   const updateLogo = (index: number, field: "x" | "y", value: number) => {
-    const updated = logos.map((logo, i) => (i === index ? { ...logo, [field]: Number(value.toFixed(1)) } : logo));
+    const updated = logos.map((logo, i) =>
+      i === index ? { ...logo, [field]: Number(value.toFixed(1)) } : logo
+    );
     onUpdate(updated);
   };
 
@@ -136,14 +153,18 @@ function CoordinateEditor({ logos, onUpdate }: { logos: TechLogo[]; onUpdate: (l
     const code = `const initialLogos: TechLogo[] = [\n${logos
       .map(
         (tech) =>
-          `  { name: "${tech.name}", path: "${tech.path}", x: ${tech.x}, y: ${tech.y}, className: "${
-            tech.className
-          }", attachedTo: ${JSON.stringify(tech.attachedTo)} },`
+          `  { name: "${tech.name}", path: "${tech.path}", x: ${tech.x}, y: ${
+            tech.y
+          }, className: "${tech.className}", attachedTo: ${JSON.stringify(
+            tech.connectedTo
+          )} },`
       )
       .join("\n")}\n];`;
     console.log(code);
     navigator.clipboard.writeText(code);
-    alert("Coordinates copied to clipboard! Paste this as 'initialLogos' in your code.");
+    alert(
+      "Coordinates copied to clipboard! Paste this as 'initialLogos' in your code."
+    );
   };
 
   if (!isOpen) {
@@ -171,24 +192,35 @@ function CoordinateEditor({ logos, onUpdate }: { logos: TechLogo[]; onUpdate: (l
     >
       <div className="bg-gray-900 text-white px-4 py-3 flex justify-between items-center">
         <h3 className="font-bold text-lg">Logo Position Editor</h3>
-        <button onClick={() => setIsOpen(false)} className="text-xl hover:text-gray-300">
+        <button
+          onClick={() => setIsOpen(false)}
+          className="text-xl hover:text-gray-300"
+        >
           ×
         </button>
       </div>
 
       <div className="editor-content p-4 overflow-y-auto max-h-[500px]">
         <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-xs text-blue-900">
-          <strong>Tip:</strong> Positions are in percentages (0-100%). The diagram will scale responsively.
+          <strong>Tip:</strong> Positions are in percentages (0-100%). The
+          diagram will scale responsively.
         </div>
 
         {logos.map((tech, index) => (
-          <div key={tech.name} className="mb-4 pb-4 border-b border-gray-200 last:border-0">
+          <div
+            key={tech.name}
+            className="mb-4 pb-4 border-b border-gray-200 last:border-0"
+          >
             <div className="font-bold text-gray-900 mb-3">{tech.name}</div>
             <div className="space-y-3">
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="text-xs text-gray-600">X Position (%)</label>
-                  <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">{tech.x}%</span>
+                  <label className="text-xs text-gray-600">
+                    X Position (%)
+                  </label>
+                  <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">
+                    {tech.x}%
+                  </span>
                 </div>
                 <input
                   type="range"
@@ -196,14 +228,20 @@ function CoordinateEditor({ logos, onUpdate }: { logos: TechLogo[]; onUpdate: (l
                   max="100"
                   step="0.1"
                   value={tech.x}
-                  onChange={(e) => updateLogo(index, "x", parseFloat(e.target.value))}
+                  onChange={(e) =>
+                    updateLogo(index, "x", parseFloat(e.target.value))
+                  }
                   className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gray-900"
                 />
               </div>
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="text-xs text-gray-600">Y Position (%)</label>
-                  <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">{tech.y}%</span>
+                  <label className="text-xs text-gray-600">
+                    Y Position (%)
+                  </label>
+                  <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">
+                    {tech.y}%
+                  </span>
                 </div>
                 <input
                   type="range"
@@ -211,7 +249,9 @@ function CoordinateEditor({ logos, onUpdate }: { logos: TechLogo[]; onUpdate: (l
                   max="100"
                   step="0.1"
                   value={tech.y}
-                  onChange={(e) => updateLogo(index, "y", parseFloat(e.target.value))}
+                  onChange={(e) =>
+                    updateLogo(index, "y", parseFloat(e.target.value))
+                  }
                   className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gray-900"
                 />
               </div>
@@ -233,8 +273,22 @@ function CoordinateEditor({ logos, onUpdate }: { logos: TechLogo[]; onUpdate: (l
 export function TechDiagram() {
   const [logos, setLogos] = useState<TechLogo[]>(initialLogos);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [containerSize, setContainerSize] = useState({ width: 700, height: 420 });
-  const [logoElements, setLogoElements] = useState<Map<string, HTMLDivElement>>(new Map());
+  const [containerSize, setContainerSize] = useState({
+    width: 700,
+    height: 420,
+  });
+  const [logoElements, setLogoElements] = useState<Map<string, HTMLDivElement>>(
+    new Map()
+  );
+  const [devToolsVisible, setDevToolsVisible] = useState(
+    process.env.NODE_ENV !== "production"
+  );
+
+  useEffect(() => {
+    document.addEventListener("devModeChanged", (e) => {
+      setDevToolsVisible((e as CustomEvent<boolean>).detail);
+    });
+  }, []);
 
   useEffect(() => {
     const updateSize = () => {
@@ -291,7 +345,7 @@ export function TechDiagram() {
       const fromElement = logoElements.get(fromLogo.name);
       const fromCenter = getLogoCenter(fromLogo, fromElement || null);
 
-      fromLogo.attachedTo.forEach((toName) => {
+      fromLogo.connectedTo.forEach((toName) => {
         const toLogo = logos.find((l) => l.name === toName);
         if (toLogo) {
           const toElement = logoElements.get(toLogo.name);
@@ -336,14 +390,19 @@ export function TechDiagram() {
   };
 
   const { lines, gradients } = generateLines();
-  const isDev = process.env.NODE_ENV !== "production";
 
   return (
     <>
-      {isDev && <CoordinateEditor logos={logos} onUpdate={setLogos} />}
+      {devToolsVisible && <CoordinateEditor logos={logos} onUpdate={setLogos} />}
       <div className="">
-        <div ref={containerRef} className="relative min-w-[500px] h-[420px] p-4">
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
+        <div
+          ref={containerRef}
+          className="relative min-w-[500px] h-[420px] p-4"
+        >
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            style={{ zIndex: 0 }}
+          >
             <defs>{gradients}</defs>
             {lines}
           </svg>
@@ -374,7 +433,9 @@ export function TechDiagram() {
                   alt={tech.name}
                   className={`${tech.className} object-contain`}
                   onError={(e) => {
-                    console.error(`Failed to load logo: ${tech.name} at ${tech.path}`);
+                    console.error(
+                      `Failed to load logo: ${tech.name} at ${tech.path}`
+                    );
                     e.currentTarget.style.display = "none";
                   }}
                 />
