@@ -15,7 +15,7 @@ export function devModeUsage() {
   console.log(
     `
 %cSince you're curious enough to check out the devTools, here's a little secret:
-You can toggle the hidden dev tool by updating the value of the devMode variable :-)`,
+You can toggle the hidden dev tool by updating the calling the toggleDevMode() function :-)`,
     // rainbow background
     rainbowBgCss + "; " + textDropShadowCss + "; " + textBoldReadableCss
   );
