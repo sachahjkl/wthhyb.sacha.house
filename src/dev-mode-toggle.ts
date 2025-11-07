@@ -10,8 +10,7 @@ const rainbowBgCss =
 // text drop shadow
 const textDropShadowCss = "text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);";
 // text bold and readable (sans-serif)
-const textBoldReadableCss =
-  "font-weight: bold; font-size: 24px; font-family: sans-serif;";
+const textBoldReadableCss = "font-weight: bold; font-size: 24px; font-family: sans-serif; color: #000;";
 export function devModeUsage() {
   console.log(
     `
