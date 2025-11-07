@@ -2,8 +2,8 @@ import "./index.css";
 
 import { Button } from "./components/Button";
 import { TechDiagram } from "./components/TechDiagram";
-import { useEffect } from "react";
 import { devModeUsage } from "./dev-mode-toggle";
+import { useEffect } from "react";
 
 export function App() {
   useEffect(() => {
@@ -50,9 +50,7 @@ export function App() {
           </section>
 
           <section className="border-t-[3px] border-gray-500 pt-16 mb-16">
-            <h2 className="text-5xl font-bold mb-8 text-gray-900">
-              Let's talk about scale.
-            </h2>
+            <h2 className="text-5xl font-bold mb-8 text-gray-900">Let's talk about scale.</h2>
 
             <ul className="space-y-4 mb-12 text-2xl text-gray-800 max-w-3xl">
               <li className="flex items-start">
@@ -77,22 +75,16 @@ export function App() {
               <p className="text-3xl font-bold text-gray-900">
                 Current users: <span className="text-[#E8424A]">12</span>
               </p>
-              <p className="text-lg text-gray-600 mt-2">
-                (6 of them are your test accounts)
-              </p>
+              <p className="text-lg text-gray-600 mt-2">(6 of them are your test accounts)</p>
             </div>
           </section>
 
           <section className="border-t-[3px] border-gray-500 pt-16 mb-16">
-            <h2 className="text-5xl font-bold mb-8 text-gray-900">
-              Your deployment strategy.
-            </h2>
+            <h2 className="text-5xl font-bold mb-8 text-gray-900">Your deployment strategy.</h2>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="bg-white p-8 rounded-lg border-2 border-gray-300 shadow-lg">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                  What you have:
-                </h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">What you have:</h3>
                 <ul className="space-y-2 text-xl text-gray-700">
                   <li>• 15 microservices</li>
                   <li>• 8 different databases</li>
@@ -104,9 +96,7 @@ export function App() {
               </div>
 
               <div className="bg-white p-8 rounded-lg border-2 border-gray-300 shadow-lg">
-                <h3 className="text-2xl font-bold mb-4 text-[#3CB371]">
-                  What you need:
-                </h3>
+                <h3 className="text-2xl font-bold mb-4 text-[#3CB371]">What you need:</h3>
                 <ul className="space-y-2 text-xl text-gray-700">
                   <li>• A single server</li>
                   <li>• Postgres</li>
@@ -125,23 +115,16 @@ export function App() {
           </section>
 
           <section className="border-t-[3px] border-gray-500 pt-16">
-            <h2 className="text-5xl font-bold mb-8 text-gray-900">
-              The real question is...
-            </h2>
+            <h2 className="text-5xl font-bold mb-8 text-gray-900">The real question is...</h2>
 
             <p className="text-3xl text-gray-800 mb-12 max-w-4xl leading-relaxed">
-              Can you explain to a junior developer what your system does
-              without drawing a diagram that looks like a bowl of spaghetti?
+              Can you explain to a junior developer what your system does without drawing a diagram that looks like a
+              bowl of spaghetti?
             </p>
 
             <div className="bg-linear-to-b from-[#E8424A] to-[#C1272D] p-12 rounded-lg text-white text-center shadow-xl">
-              <p className="text-4xl font-bold mb-4">
-                Complexity is not a virtue.
-              </p>
-              <p className="text-2xl">
-                Start simple. Add complexity only when you have proof you need
-                it.
-              </p>
+              <p className="text-4xl font-bold mb-4">Complexity is not a virtue.</p>
+              <p className="text-2xl">Start simple. Add complexity only when you have proof you need it.</p>
             </div>
           </section>
         </div>
@@ -150,15 +133,12 @@ export function App() {
       <footer className=" text-black py-4 text-center">
         <p className="text-2xl">
           (C) {new Date().getFullYear()}{" "}
-          <a
-            href="https://sacha.house"
-            className="text-blue-500 visited:text-purple-500 hover:underline"
-          >
+          <a href="https://sacha.house" className="text-blue-500 visited:text-purple-500 hover:underline">
             sacha.house
           </a>{" "}
           -{" "}
           <a
-            href="https://x.com/codinghorror/status/347070841059692545"
+            href="https://web.archive.org/web/20130402223000/http://boundary.com/"
             className="text-blue-500 visited:text-purple-500 hover:underline"
           >
             original inspiration
