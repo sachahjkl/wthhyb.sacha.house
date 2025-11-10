@@ -145,7 +145,7 @@ export function App() {
           </a>{" "}
           -{" "}
           <a
-            href="https://gitlab.com/sachahjkl/wthhyb.sacha.house"
+            href="https://github.com/sachahjkl/wthhyb.sacha.house"
             className="text-blue-500 visited:text-purple-500 hover:underline"
           >
             source code
