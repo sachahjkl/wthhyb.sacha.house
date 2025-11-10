@@ -1,55 +1,68 @@
 @import "tailwindcss";
 
-/* normal */
+@layer base {
+}
+
+li {
+  @apply mb-0;
+}
 @font-face {
-  font-family: "Barlow Condensed";
+  font-family: "Geogrotesque";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(./fonts/geogrotesque-regular.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Geogrotesque";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(./fonts/BarlowCondensed-Regular.ttf) format("woff2");
+  src: url(./fonts/geogrotesque-medium.woff) format("woff");
 }
 
 @font-face {
-  font-family: "Barlow Condensed";
+  font-family: "Geogrotesque";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(./fonts/BarlowCondensed-Bold.ttf) format("woff2");
+  src: url(./fonts/geogrotesque-bold.woff) format("woff");
 }
 
 @font-face {
-  font-family: "Barlow Condensed";
-  font-style: normal;
-  font-weight: 900;
+  font-family: "Geogrotesque";
+  font-style: italic;
+  font-weight: 300;
   font-display: swap;
-  src: url(./fonts/BarlowCondensed-Black.ttf) format("woff2");
+  src: url(./fonts/geogrotesque-regular-italic.woff) format("woff");
 }
 
-/* italic */
 @font-face {
-  font-family: "Barlow Condensed";
+  font-family: "Geogrotesque";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(./fonts/BarlowCondensed-Italic.ttf) format("woff2");
-}
-@font-face {
-  font-family: "Barlow Condensed";
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: url(./fonts/BarlowCondensed-BoldItalic.ttf) format("woff2");
+  src: url(./fonts/geogrotesque-medium-italic.woff) format("woff");
 }
 
 @font-face {
-  font-family: "Barlow Condensed";
+  font-family: "Geogrotesque";
   font-style: italic;
-  font-weight: 900;
+  font-weight: 700;
   font-display: swap;
-  src: url(./fonts/BarlowCondensed-BoldItalic.ttf) format("woff2");
+  src: url(./fonts/geogrotesque-bold-italic.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Geogrotesque";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(./fonts/geogrotesque-semibold.woff) format("woff");
 }
 
 body {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Geogrotesque", sans-serif;
   font-optical-sizing: auto;
 }
