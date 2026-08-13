@@ -1,6 +1,6 @@
 services:
   wthhyb:
-    image: sachahjkl/wthhyb.sacha.house:main
+    image: ghcr.io/sachahjkl/wthhyb.sacha.house:main
     container_name: wthhyb
     restart: unless-stopped
 
