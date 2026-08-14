@@ -34,7 +34,8 @@ Example:
   process.exit(0);
 }
 
-const toCamelCase = (str: string): string => str.replace(/-([a-z])/g, (g) => (g[1] ? g[1].toUpperCase() : ""));
+const toCamelCase = (str: string): string =>
+  str.replace(/-([a-z])/g, (g) => (g[1] ? g[1].toUpperCase() : ""));
 
 const parseValue = (value: string): any => {
   if (value === "true") return true;
@@ -87,7 +88,10 @@ function parseArgs(): Partial<Bun.BuildConfig> {
       const childKey = parts[1];
       if (parentKey && childKey) {
         const parent = config[parentKey];
-        const parentObj = (parent && typeof parent === "object" ? parent : {}) as Record<string, unknown>;
+        const parentObj = (parent && typeof parent === "object" ? parent : {}) as Record<
+          string,
+          unknown
+        >;
         (config as Record<string, unknown>)[parentKey] = parentObj;
         parentObj[childKey] = parseValue(value);
       }
@@ -127,7 +131,9 @@ const start = performance.now();
 const entrypoints = [...new Bun.Glob("**.html").scanSync("src")]
   .map((a) => path.resolve("src", a))
   .filter((dir) => !dir.includes("node_modules"));
-console.log(`📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`);
+console.log(
+  `📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`,
+);
 
 const result = await Bun.build({
   entrypoints,

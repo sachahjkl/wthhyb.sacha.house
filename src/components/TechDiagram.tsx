@@ -39,7 +39,11 @@ const logoDefinitions: LogoDefinition[] = [
     path: (await import("../logos/MongoDB-Logo.svg")).default,
     connectedTo: ["Redis", "Java", "VMware"],
   },
-  { name: "Redis", path: (await import("../logos/Redis_Logo.svg")).default, connectedTo: ["OpenStack", "Java"] },
+  {
+    name: "Redis",
+    path: (await import("../logos/Redis_Logo.svg")).default,
+    connectedTo: ["OpenStack", "Java"],
+  },
   {
     name: "Riak",
     path: (await import("../logos/Riak_logo.svg")).default,
@@ -97,7 +101,15 @@ const logoLayouts = [
   { name: "Ruby", x: 58.05, y: 34.47, width: 83.0, height: 64.0, paddingX: 8.0, paddingY: 8.0 },
   { name: "Erlang", x: 56.65, y: 12.43, width: 76.0, height: 61.0, paddingX: 8.0, paddingY: 8.0 },
   { name: "AWS", x: 28.59, y: 9.52, width: 145.0, height: 58.0, paddingX: 8.0, paddingY: 8.0 },
-  { name: "Cassandra", x: 73.39, y: 10.48, width: 135.0, height: 81.0, paddingX: 8.0, paddingY: 8.0 },
+  {
+    name: "Cassandra",
+    x: 73.39,
+    y: 10.48,
+    width: 135.0,
+    height: 81.0,
+    paddingX: 8.0,
+    paddingY: 8.0,
+  },
   { name: "VMware", x: 76.84, y: 42.14, width: 112.0, height: 40.0, paddingX: 8.0, paddingY: 8.0 },
   { name: "Node.js", x: 78.98, y: 74.05, width: 106.0, height: 47.0, paddingX: 8.0, paddingY: 8.0 },
 ];
@@ -178,7 +190,7 @@ function CoordinateEditor({
         });
       }
     },
-    [isDragging, isResizing, dragOffset, resizeStart]
+    [isDragging, isResizing, dragOffset, resizeStart],
   );
 
   const handleMouseUp = useCallback(() => {
@@ -198,7 +210,9 @@ function CoordinateEditor({
   }, [isDragging, isResizing, handleMouseMove, handleMouseUp]);
 
   const updateLogo = (index: number, field: keyof TechLogo, value: number) => {
-    const updated = logos.map((logo, i) => (i === index ? { ...logo, [field]: Number(value.toFixed(1)) } : logo));
+    const updated = logos.map((logo, i) =>
+      i === index ? { ...logo, [field]: Number(value.toFixed(1)) } : logo,
+    );
     onUpdate(updated);
   };
 
@@ -228,10 +242,10 @@ function CoordinateEditor({
       .map(
         (tech) =>
           `  { name: "${tech.name}", x: ${Number(tech.x).toFixed(2)}, y: ${Number(tech.y).toFixed(2)}, width: ${Number(
-            tech.width
-          ).toFixed(2)}, height: ${Number(tech.height).toFixed(2)}, paddingX: ${Number(tech.paddingX).toFixed(
-            2
-          )}, paddingY: ${Number(tech.paddingY).toFixed(2)} },`
+            tech.width,
+          ).toFixed(2)}, height: ${Number(tech.height).toFixed(2)}, paddingX: ${Number(
+            tech.paddingX,
+          ).toFixed(2)}, paddingY: ${Number(tech.paddingY).toFixed(2)} },`,
       )
       .join("\n")}\n];`;
     console.log(code);
@@ -273,9 +287,13 @@ function CoordinateEditor({
         </button>
       </div>
 
-      <div className="editor-content p-4 overflow-y-auto" style={{ height: `${size.height - 60}px` }}>
+      <div
+        className="editor-content p-4 overflow-y-auto"
+        style={{ height: `${size.height - 60}px` }}
+      >
         <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-xs text-blue-900">
-          <strong>Tip:</strong> Positions are in percentages (0-100%). The diagram will scale responsively.
+          <strong>Tip:</strong> Positions are in percentages (0-100%). The diagram will scale
+          responsively.
         </div>
 
         <div className="mb-6 p-4 bg-gray-50 border border-gray-300 rounded">
@@ -298,7 +316,8 @@ function CoordinateEditor({
           </div>
           {selectedLogos.size > 0 && (
             <div className="mb-3 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-900">
-              Adjustments will only affect selected logos. Click logos in the diagram to select/deselect.
+              Adjustments will only affect selected logos. Click logos in the diagram to
+              select/deselect.
             </div>
           )}
           <div className="space-y-3">
@@ -416,7 +435,9 @@ function CoordinateEditor({
         <div className="mb-6 p-4 bg-gray-50 border border-gray-300 rounded">
           <div className="flex justify-between items-center mb-3">
             <h4 className="text-sm font-semibold text-gray-900">Size Adjustments</h4>
-            {selectedLogos.size > 0 && <span className="text-xs text-gray-600">{selectedLogos.size} selected</span>}
+            {selectedLogos.size > 0 && (
+              <span className="text-xs text-gray-600">{selectedLogos.size} selected</span>
+            )}
           </div>
           <div className="space-y-3">
             <div>
@@ -533,13 +554,17 @@ function CoordinateEditor({
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="text-gray-900 font-semibold">{tech.name}</div>
-                {isSelected && <span className="text-xs bg-blue-500 text-white px-2 py-1 rounded">Selected</span>}
+                {isSelected && (
+                  <span className="text-xs bg-blue-500 text-white px-2 py-1 rounded">Selected</span>
+                )}
               </div>
               <div className="space-y-3">
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <label className="text-xs text-gray-600">X Position (%)</label>
-                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">{tech.x}%</span>
+                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">
+                      {tech.x}%
+                    </span>
                   </div>
                   <input
                     type="range"
@@ -554,7 +579,9 @@ function CoordinateEditor({
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <label className="text-xs text-gray-600">Y Position (%)</label>
-                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">{tech.y}%</span>
+                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">
+                      {tech.y}%
+                    </span>
                   </div>
                   <input
                     type="range"
@@ -569,7 +596,9 @@ function CoordinateEditor({
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <label className="text-xs text-gray-600">Width (px)</label>
-                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">{tech.width}px</span>
+                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">
+                      {tech.width}px
+                    </span>
                   </div>
                   <input
                     type="range"
@@ -584,7 +613,9 @@ function CoordinateEditor({
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <label className="text-xs text-gray-600">Height (px)</label>
-                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">{tech.height}px</span>
+                    <span className="text-xs font-mono bg-gray-100 px-2 py-1 rounded">
+                      {tech.height}px
+                    </span>
                   </div>
                   <input
                     type="range"
@@ -724,7 +755,7 @@ export function TechDiagram() {
               <stop offset="20%" stopColor="#999" stopOpacity="0.6" />
               <stop offset="50%" stopColor="#999" stopOpacity="0.2" />
               <stop offset="70%" stopColor="#999" stopOpacity="0" />
-            </linearGradient>
+            </linearGradient>,
           );
 
           lines.push(
@@ -736,7 +767,7 @@ export function TechDiagram() {
               y2={toCenter.y}
               stroke={`url(#${gradientId})`}
               strokeWidth={strokeWidth}
-            />
+            />,
           );
         }
       });
@@ -787,8 +818,12 @@ export function TechDiagram() {
       });
     } else {
       const shiftPressed = e.shiftKey;
-      const logosToMove = shiftPressed || selectedLogos.size === 0 ? new Set([logo.name]) : selectedLogos;
-      const initialPositions = new Map<TechLogoName, { startPercentX: number; startPercentY: number }>();
+      const logosToMove =
+        shiftPressed || selectedLogos.size === 0 ? new Set([logo.name]) : selectedLogos;
+      const initialPositions = new Map<
+        TechLogoName,
+        { startPercentX: number; startPercentY: number }
+      >();
 
       logos.forEach((l) => {
         if (logosToMove.has(l.name)) {
@@ -830,7 +865,7 @@ export function TechDiagram() {
               };
             }
             return logo;
-          })
+          }),
         );
       } else if (resizingLogo) {
         const deltaX = e.clientX - resizingLogo.startX;
@@ -844,8 +879,8 @@ export function TechDiagram() {
                   width: Math.max(10, resizingLogo.startWidth + deltaX),
                   height: Math.max(10, resizingLogo.startHeight + deltaY),
                 }
-              : logo
-          )
+              : logo,
+          ),
         );
       }
     };
@@ -915,13 +950,15 @@ export function TechDiagram() {
                   }
                 }}
                 onMouseDown={(e) => handleLogoMouseDown(e, tech)}
-                onClick={(e) => {
+                onClick={() => {
                   if (!ctrlPressed && editorOpen) {
                     toggleSelection(tech.name);
                   }
                 }}
                 className={`absolute bg-white rounded-2xl shadow-sm border-2 ${
-                  isSelected ? "border-blue-500 ring-2 ring-blue-300 ring-offset-2" : "border-gray-200"
+                  isSelected
+                    ? "border-blue-500 ring-2 ring-blue-300 ring-offset-2"
+                    : "border-gray-200"
                 } ${isDragging || isResizing ? "opacity-75" : ""} ${editorOpen ? "cursor-pointer" : ""}`}
                 style={{
                   left: `${tech.x}%`,

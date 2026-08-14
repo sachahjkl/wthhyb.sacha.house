@@ -50,7 +50,9 @@ export function App() {
           </section>
 
           <section className="border-t-[3px] border-gray-500 pt-16 mb-16">
-            <h2 className="sm:text-5xl text-2xl font-semibold mb-8 text-gray-900">Let's talk about scale.</h2>
+            <h2 className="sm:text-5xl text-2xl font-semibold mb-8 text-gray-900">
+              Let's talk about scale.
+            </h2>
 
             <ul className="space-y-4 mb-12 sm:text-2xl text-xl text-gray-800 max-w-3xl">
               <li className="flex items-start">
@@ -75,12 +77,16 @@ export function App() {
               <p className="sm:text-3xl text-2xl text-gray-900">
                 Current users: <span className="text-[#E8424A]">12</span>
               </p>
-              <p className="sm:text-lg text-base text-gray-600 mt-2">(6 of them are your test accounts)</p>
+              <p className="sm:text-lg text-base text-gray-600 mt-2">
+                (6 of them are your test accounts)
+              </p>
             </div>
           </section>
 
           <section className="border-t-[3px] border-gray-500 pt-16 mb-16">
-            <h2 className="sm:text-5xl text-2xl mb-8 font-semibold text-gray-900">Your deployment strategy.</h2>
+            <h2 className="sm:text-5xl text-2xl mb-8 font-semibold text-gray-900">
+              Your deployment strategy.
+            </h2>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="bg-white p-8 rounded-lg border-2 border-gray-300 shadow-lg">
@@ -115,16 +121,20 @@ export function App() {
           </section>
 
           <section className="border-t-[3px] border-gray-500 pt-16">
-            <h2 className="sm:text-5xl text-2xl mb-8 font-semibold text-gray-900">The real question is...</h2>
+            <h2 className="sm:text-5xl text-2xl mb-8 font-semibold text-gray-900">
+              The real question is...
+            </h2>
 
             <p className="sm:text-3xl text-xl text-gray-800 mb-12 max-w-4xl leading-relaxed">
-              Can you explain to a junior developer what your system does without drawing a diagram that looks like a
-              bowl of spaghetti?
+              Can you explain to a junior developer what your system does without drawing a diagram
+              that looks like a bowl of spaghetti?
             </p>
 
             <div className="bg-linear-to-b from-[#E8424A] to-[#C1272D] p-12 rounded-lg text-white text-center shadow-xl">
               <p className="sm:text-4xl text-2xl mb-4 font-semibold">Complexity is not a virtue.</p>
-              <p className="sm:text-2xl text-xl">Start simple. Add complexity only when you have proof you need it.</p>
+              <p className="sm:text-2xl text-xl">
+                Start simple. Add complexity only when you have proof you need it.
+              </p>
             </div>
           </section>
         </div>
@@ -133,7 +143,10 @@ export function App() {
       <footer className=" text-black py-4 text-center">
         <p className="sm:text-2xl text-lg">
           (C) {new Date().getFullYear()}{" "}
-          <a href="https://sacha.house" className="text-blue-500 visited:text-purple-500 hover:underline">
+          <a
+            href="https://sacha.house"
+            className="text-blue-500 visited:text-purple-500 hover:underline"
+          >
             sacha.house
           </a>{" "}
           -{" "}

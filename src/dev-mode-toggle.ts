@@ -10,27 +10,26 @@ const rainbowBgCss =
 // text drop shadow
 const textDropShadowCss = "text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);";
 // text bold and readable (sans-serif)
-const textBoldReadableCss = "font-weight: bold; font-size: 24px; font-family: sans-serif; color: #000;";
+const textBoldReadableCss =
+  "font-weight: bold; font-size: 24px; font-family: sans-serif; color: #000;";
 export function devModeUsage() {
   console.log(
     `
 %cSince you're curious enough to check out the devTools, here's a little secret:
 You can toggle the hidden dev tool by updating the calling the toggleDevMode() function :-)`,
     // rainbow background
-    rainbowBgCss + "; " + textDropShadowCss + "; " + textBoldReadableCss
+    rainbowBgCss + "; " + textDropShadowCss + "; " + textBoldReadableCss,
   );
 }
 
 export function toggleDevMode() {
   window.devMode = !window.devMode;
   // using a custom event to signal our react component of the change
-  document.dispatchEvent(
-    new CustomEvent("devModeChanged", { detail: window.devMode })
-  );
+  document.dispatchEvent(new CustomEvent("devModeChanged", { detail: window.devMode }));
   console.log(
     `
 %cDev mode is now ${window.devMode ? "enabled" : "disabled"}`,
-    rainbowBgCss + "; " + textDropShadowCss + "; " + textBoldReadableCss
+    rainbowBgCss + "; " + textDropShadowCss + "; " + textBoldReadableCss,
   );
 }
 

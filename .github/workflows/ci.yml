@@ -4,6 +4,7 @@ on:
   push:
     branches: ["**"]
     tags: ["**"]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -15,7 +16,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check:
+    runs-on: [self-hosted, nixos]
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: nix shell nixpkgs#bun --command bun install --frozen-lockfile
+      - run: nix shell nixpkgs#bun --command bun run format:check
+      - run: nix shell nixpkgs#bun --command bun run lint
+      - run: nix shell nixpkgs#bun --command bun run check
+      - run: nix shell nixpkgs#bun --command bun run build
+
   image:
+    if: github.event_name == 'push'
+    needs: check
     runs-on: [self-hosted, nixos]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
