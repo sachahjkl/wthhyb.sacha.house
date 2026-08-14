@@ -1,5 +1,3 @@
-[English](README.md) | [Français](README.fr.md)
-
 # bun-react-tailwind-template
 
 To install dependencies:
