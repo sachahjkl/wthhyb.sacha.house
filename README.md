@@ -19,3 +19,9 @@ bun start
 ```
 
 This project was created using `bun init` in bun v1.3.1. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+
+## Deployment
+
+GitHub Actions checks every branch on GitHub-hosted runners. A commit on `main` publishes one immutable GHCR image and deploys staging.
+
+The production workflow promotes the exact image digest running on staging after approval. Nomad jobs live in `deploy/nomad`.

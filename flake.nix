@@ -28,6 +28,7 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [ bun2nix.overlays.default ];
+            config.allowUnfreePredicate = package: nixpkgs.lib.getName package == "nomad";
           };
           packageJson = builtins.fromJSON (builtins.readFile ./package.json);
           pname = "wthhyb-sacha-house";
@@ -103,6 +104,12 @@
               ExposedPorts."80/tcp" = { };
             };
           };
+          nomadJobs = pkgs.runCommand "${pname}-nomad-jobs" { nativeBuildInputs = [ pkgs.nomad ]; } ''
+            image="ghcr.io/sachahjkl/wthhyb.sacha.house@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+            nomad job validate -var "image=$image" ${./deploy/nomad/staging.nomad.hcl}
+            nomad job validate -var "image=$image" ${./deploy/nomad/production.nomad.hcl}
+            touch "$out"
+          '';
         in
         {
           packages = {
@@ -111,7 +118,7 @@
           };
 
           checks = {
-            inherit actionlint dockerImage;
+            inherit actionlint dockerImage nomadJobs;
             build = site;
             format = mkCheck "format" "bun run format:check";
             lint = mkCheck "lint" "bun run lint";
