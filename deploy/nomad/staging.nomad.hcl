@@ -73,6 +73,7 @@ job "wthhyb-sacha-house" {
           "traefik.http.routers.wthhyb-sacha-house-staging.entrypoints=nomad",
           "traefik.http.routers.wthhyb-sacha-house-staging.middlewares=wthhyb-sacha-house-staging-noindex",
           "traefik.http.routers.wthhyb-sacha-house-staging.rule=Host(`staging.wthhyb.sacha.house`)",
+          "traefik.http.routers.wthhyb-sacha-house-staging.tls.domains[0].main=staging.wthhyb.sacha.house",
           "traefik.http.middlewares.wthhyb-sacha-house-staging-noindex.headers.customresponseheaders.X-Robots-Tag=noindex, nofollow",
         ]
 
