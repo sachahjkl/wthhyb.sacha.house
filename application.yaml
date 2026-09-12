@@ -1,0 +1,8 @@
+application:
+  name: wthhyb-sacha-house
+  port: 80
+  healthPath: /
+
+domain:
+  production: wthhyb.sacha.house
+  staging: staging.wthhyb.sacha.house
