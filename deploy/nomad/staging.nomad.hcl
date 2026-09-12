@@ -68,6 +68,13 @@ job "wthhyb-sacha-house" {
         name     = "wthhyb-sacha-house-staging"
         provider = "nomad"
         port     = "http"
+        tags = [
+          "traefik.enable=true",
+          "traefik.http.routers.wthhyb-sacha-house-staging.entrypoints=nomad",
+          "traefik.http.routers.wthhyb-sacha-house-staging.middlewares=wthhyb-sacha-house-staging-noindex",
+          "traefik.http.routers.wthhyb-sacha-house-staging.rule=Host(`staging.wthhyb.sacha.house`)",
+          "traefik.http.middlewares.wthhyb-sacha-house-staging-noindex.headers.customresponseheaders.X-Robots-Tag=noindex, nofollow",
+        ]
 
         check {
           name     = "HTTP health"
