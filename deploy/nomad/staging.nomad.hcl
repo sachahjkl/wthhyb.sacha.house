@@ -68,7 +68,7 @@ job "wthhyb-sacha-house" {
         port     = "http"
         tags = [
           "traefik.enable=true",
-          "traefik.http.routers.wthhyb-sacha-house-staging.entrypoints=nomad",
+          "traefik.http.routers.wthhyb-sacha-house-staging.entrypoints=websecure",
           "traefik.http.routers.wthhyb-sacha-house-staging.middlewares=wthhyb-sacha-house-staging-noindex",
           "traefik.http.routers.wthhyb-sacha-house-staging.rule=Host(`staging.wthhyb.sacha.house`)",
           "traefik.http.routers.wthhyb-sacha-house-staging.tls.domains[0].main=staging.wthhyb.sacha.house",
