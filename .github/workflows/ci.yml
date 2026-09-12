@@ -139,6 +139,7 @@ jobs:
           tags: tag:github-actions-deploy
           ping: homelab.panthera-python.ts.net
       - name: Deploy exact image to staging
+        timeout-minutes: 8
         env:
           IMAGE: ${{ needs.publish.outputs.image }}
           NOMAD_ADDR: http://homelab.panthera-python.ts.net:4646
