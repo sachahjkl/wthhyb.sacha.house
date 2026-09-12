@@ -107,28 +107,6 @@
             ExposedPorts."80/tcp" = {};
           };
         };
-        nomadJobs = pkgs.runCommand "${pname}-nomad-jobs" {nativeBuildInputs = [pkgs.nomad pkgs.nomad-pack];} ''
-          export HOME="$TMPDIR"
-          image="ghcr.io/sachahjkl/wthhyb.sacha.house@sha256:0000000000000000000000000000000000000000000000000000000000000000"
-          for environment in staging production; do
-            cat > "$TMPDIR/$environment.vars.hcl" <<EOF
-          name = "wthhyb-sacha-house"
-          environment = "$environment"
-          domain = "$environment.wthhyb.sacha.house"
-          health_path = "/"
-          image = "$image"
-          port = 80
-          service_tags = []
-          volume_enabled = false
-          volume_mount_path = ""
-          volume_name = ""
-          EOF
-            nomad-pack render ${./deploy} --var-file "$TMPDIR/$environment.vars.hcl" \
-              --to-dir "$TMPDIR/$environment" --auto-approve >/dev/null
-            nomad job validate "$TMPDIR/$environment/application/application.nomad"
-          done
-          touch "$out"
-        '';
       in {
         packages = {
           default = site;
@@ -136,7 +114,7 @@
         };
 
         checks = {
-          inherit actionlint dockerImage nomadJobs;
+          inherit actionlint dockerImage;
           build = site;
           format = mkCheck "format" "bun run format:check";
           lint = mkCheck "lint" "bun run lint";

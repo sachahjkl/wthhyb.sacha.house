@@ -3,6 +3,13 @@ application:
   port: 80
   healthPath: /
 
-domain:
-  production: wthhyb.sacha.house
-  staging: staging.wthhyb.sacha.house
+environments:
+  staging:
+    domain: staging.wthhyb.sacha.house
+    noIndex: true
+  production:
+    domain: wthhyb.sacha.house
+
+resources:
+  cpu: 200
+  memory: 128
