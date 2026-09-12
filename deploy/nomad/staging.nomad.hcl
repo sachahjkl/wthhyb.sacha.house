@@ -49,9 +49,7 @@ job "wthhyb-sacha-house" {
       mode = "host"
 
       port "http" {
-        static       = 9021
-        to           = 80
-        host_network = "loopback"
+        to = 80
       }
     }
 
