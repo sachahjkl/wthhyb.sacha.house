@@ -33,7 +33,6 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [bun2nix.overlays.default];
-          config.allowUnfreePredicate = package: nixpkgs.lib.getName package == "nomad";
         };
         packageJson = builtins.fromJSON (builtins.readFile ./package.json);
         pname = "wthhyb-sacha-house";
@@ -90,7 +89,7 @@
             nativeBuildInputs = [pkgs.actionlint];
           }
           ''
-            actionlint -config-file ${src}/.github/actionlint.yaml ${src}/.github/workflows/*.yml
+            actionlint ${src}/.github/workflows/*.yml
             touch $out
           '';
 
