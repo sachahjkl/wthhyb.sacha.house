@@ -10,6 +10,6 @@ jobs:
       contents: read
       id-token: write
       packages: read
-    uses: sachahjkl/deployment-actions/.github/workflows/application-production.yml@2c48656195637544e57df59033ae62859f379649
+    uses: sachahjkl/deployment-actions/.github/workflows/application-production.yml@v1.1.0
     with:
       local-pack: true
