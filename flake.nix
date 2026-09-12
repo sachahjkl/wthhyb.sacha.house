@@ -123,7 +123,7 @@
           volume_mount_path = ""
           volume_name = ""
           EOF
-            nomad-pack render ${./deploy/nomad} --var-file "$TMPDIR/$environment.vars.hcl" \
+            nomad-pack render ${./deploy} --var-file "$TMPDIR/$environment.vars.hcl" \
               --to-dir "$TMPDIR/$environment" --auto-approve >/dev/null
             nomad job validate "$TMPDIR/$environment/homelab-application/application.nomad"
           done
